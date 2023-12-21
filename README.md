@@ -2,8 +2,8 @@
 
 > WIP
 
-> ![NOTE]
-> fork openai-node/core
+> [!NOTE]
+> fork from openai-node/src/core.ts
 
 ## License
 
