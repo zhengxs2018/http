@@ -24,9 +24,10 @@ export default defineConfig({
         index: 'src/index.ts',
         'exports/web': 'src/exports/web.ts',
         'exports/node': 'src/exports/node.ts',
-        'shims/node': 'src/shims/node.ts',
-        'shims/node-next': 'src/shims/node-next.ts',
+        'exports/nodenext': 'src/exports/nodenext.ts',
         'shims/web': 'src/shims/web.ts',
+        'shims/node': 'src/shims/node.ts',
+        'shims/nodenext': 'src/shims/nodenext.ts',
       },
     },
     rollupOptions: {

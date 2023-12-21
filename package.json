@@ -1,27 +1,40 @@
 {
   "name": "@zhengxs/http",
-  "version": "0.0.1-rc.0",
+  "version": "0.0.1-rc.2",
   "description": "A lightweight cross-platform http request library",
   "keywords": [
     "http",
     "fetch",
-    "modern",
-    "web"
+    "modern-web",
+    "browser"
   ],
   "type": "commonjs",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
-  "browser": "./dist/web.mjs",
+  "browser": "./dist/exports/web.mjs",
   "types": "./dist-types/index.d.ts",
   "exports": {
     ".": {
       "node": {
-        "import": "./exports/node.mjs",
-        "require": "./exports/node.cjs"
+        "require": "./dist/exports/node.cjs",
+        "default": "./dist/exports/node.mjs"
       },
       "types": "./dist-types/index.d.mts",
       "require": "./dist/index.cjs",
       "default": "./dist/index.mjs"
+    },
+    "./exports/*": {
+      "types": "./dist-types/exports/*.d.ts",
+      "require": "./dist/exports/*.cjs",
+      "default": "./dist/exports/*.mjs"
+    },
+    "./exports/*.mjs": {
+      "types": "./dist-types/exports/*.d.ts",
+      "default": "./dist/exports/*.mjs"
+    },
+    "./exports/*.cjs": {
+      "types": "./dist-types/exports/*.d.ts",
+      "default": "./dist/exports/*.cjs"
     },
     "./shims/*": {
       "types": "./dist-types/shims/*.d.ts",
@@ -39,14 +52,8 @@
     "./package.json": "./package.json"
   },
   "sideEffect": [
-    "./_shims/index.cjs",
-    "./_shims/index.mjs",
-    "./dist/shims/node.cjs",
-    "./dist/shims/node.mjs",
-    "./dist/shims/node-next.cjs",
-    "./dist/shims/node-next.mjs",
-    "./dist/shims/web.cjs",
-    "./dist/shims/web.mjs"
+    "./dist/shims/*.cjs",
+    "./dist/shims/*.mjs"
   ],
   "files": [
     "dist",
