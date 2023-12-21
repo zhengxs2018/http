@@ -1,0 +1,127 @@
+{
+  "name": "@zhengxs/http",
+  "version": "0.0.1-rc.0",
+  "description": "A lightweight cross-platform http request library",
+  "keywords": [
+    "http",
+    "fetch",
+    "modern",
+    "web"
+  ],
+  "type": "commonjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "browser": "./dist/web.mjs",
+  "types": "./dist-types/index.d.ts",
+  "exports": {
+    ".": {
+      "node": {
+        "import": "./exports/node.mjs",
+        "require": "./exports/node.cjs"
+      },
+      "types": "./dist-types/index.d.mts",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
+    },
+    "./shims/*": {
+      "types": "./dist-types/shims/*.d.ts",
+      "require": "./dist/shims/*.cjs",
+      "default": "./dist/shims/*.mjs"
+    },
+    "./shims/*.mjs": {
+      "types": "./dist-types/shims/*.d.ts",
+      "default": "./dist/shims/*.mjs"
+    },
+    "./shims/*.cjs": {
+      "types": "./dist-types/shims/*.d.ts",
+      "default": "./dist/shims/*.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffect": [
+    "./_shims/index.cjs",
+    "./_shims/index.mjs",
+    "./dist/shims/node.cjs",
+    "./dist/shims/node.mjs",
+    "./dist/shims/node-next.cjs",
+    "./dist/shims/node-next.mjs",
+    "./dist/shims/web.cjs",
+    "./dist/shims/web.mjs"
+  ],
+  "files": [
+    "dist",
+    "dist-types",
+    "src"
+  ],
+  "scripts": {
+    "prepare": "husky install",
+    "prepublishOnly": "pnpm build && clean-publish",
+    "build": "pnpm clean && vite build && pnpm extract-api",
+    "watch": "vite build --watch",
+    "clean": "trash dist dist-types temp package",
+    "extract-api": "mkdirp ./review && api-extractor run --local",
+    "lint": "eslint . --ext .ts,.cjs",
+    "lint:fix": "eslint . --ext .ts,.cjs --fix --fix-type [problem,suggestion]",
+    "fmt": "prettier --write \"**/*.{ts,mts,json,,md}\" --log-level warn"
+  },
+  "packageManager": "pnpm@8.0.0",
+  "peerDependencies": {
+    "agentkeepalive": "^4.5.0",
+    "form-data-encoder": "^4.0.2"
+  },
+  "peerDependenciesMeta": {
+    "agentkeepalive": {
+      "optional": true
+    },
+    "form-data-encoder": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "^7.39.0",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/node": "^20.10.5",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "agentkeepalive": "^4.5.0",
+    "clean-publish": "^4.2.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-define-config": "^2.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.1.0",
+    "eslint-plugin-tsdoc": "^0.2.17",
+    "form-data-encoder": "^4.0.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "mkdirp": "^3.0.1",
+    "prettier": "^3.1.1",
+    "trash-cli": "^5.0.0",
+    "typescript": "~5.3.3",
+    "vite": "^5.0.10",
+    "vite-plugin-checker": "^0.6.2",
+    "vite-plugin-dts": "^3.6.4",
+    "vite-plugin-externalize-deps": "^0.8.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "clean-publish": {
+    "withoutPublish": true,
+    "tempDir": "package"
+  },
+  "homepage": "https://github.com/zhengxs2018/http#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhengxs2018/http"
+  },
+  "bugs": {
+    "url": "https://github.com/zhengxs2018/http/issues"
+  },
+  "author": "zhengxs <zhengxs2018@gmail.com>",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT"
+}
