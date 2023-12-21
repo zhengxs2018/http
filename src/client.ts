@@ -429,7 +429,7 @@ export class APIClient {
     return new APIPromise(this.makeRequest(options, remainingRetries));
   }
 
-  private async makeRequest(
+  protected async makeRequest(
     optionsInput: PromiseOrValue<FinalRequestOptions>,
     retriesRemaining: number | null,
   ): Promise<APIResponseProps> {
