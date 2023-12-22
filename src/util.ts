@@ -67,6 +67,7 @@ const requestOptionsKeys: KeysEnum<RequestOptions> = {
   query: true,
   body: true,
   headers: true,
+  duplex: true,
 
   maxRetries: true,
   stream: true,

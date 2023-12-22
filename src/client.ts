@@ -189,7 +189,7 @@ export class APIClient {
   timeout: number;
   httpAgent: Agent | undefined;
 
-  private fetch: Fetch;
+  protected fetch: Fetch;
   protected idempotencyHeader?: string;
 
   constructor({
@@ -377,6 +377,7 @@ export class APIClient {
       method,
       ...(body && { body: body as any }),
       headers: reqHeaders,
+      duplex: options.duplex,
       ...(httpAgent && { agent: httpAgent }),
       // @ts-ignore node-fetch uses a custom AbortSignal type that is
       // not compatible with standard web types

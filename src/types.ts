@@ -29,6 +29,7 @@ export type RequestOptions<
   httpAgent?: Agent;
   signal?: AbortSignal | undefined | null;
   idempotencyKey?: string;
+  duplex?: boolean;
 
   __binaryResponse?: boolean | undefined;
 };

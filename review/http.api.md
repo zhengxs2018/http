@@ -59,6 +59,8 @@ export class APIClient {
     protected defaultQuery(): DefaultQuery | undefined;
     // (undocumented)
     delete<Req extends NonNullable<unknown>, Rsp>(path: string, opts?: PromiseOrValue<RequestOptions<Req>>): APIPromise<Rsp>;
+    // (undocumented)
+    protected fetch: Fetch;
     // Warning: (ae-forgotten-export) The symbol "RequestInfo_2" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
@@ -392,6 +394,7 @@ export type RequestOptions<Req extends NonNullable<unknown> = Record<string, unk
     httpAgent?: Agent;
     signal?: AbortSignal | undefined | null;
     idempotencyKey?: string;
+    duplex?: boolean;
     __binaryResponse?: boolean | undefined;
 };
 
