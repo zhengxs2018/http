@@ -394,7 +394,7 @@ export type RequestOptions<Req extends NonNullable<unknown> = Record<string, unk
     httpAgent?: Agent;
     signal?: AbortSignal | undefined | null;
     idempotencyKey?: string;
-    duplex?: boolean;
+    duplex?: 'half' | 'full' | undefined;
     __binaryResponse?: boolean | undefined;
 };
 
