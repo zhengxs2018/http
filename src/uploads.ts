@@ -1,4 +1,5 @@
 import {
+  File,
   type FsReadStream,
   getMultipartRequestOptions,
   isFsReadStream,
